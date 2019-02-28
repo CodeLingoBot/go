@@ -100,12 +100,12 @@ func (c *Conn) WriteMessage(messageType byte, message []byte) error {
 	return c.sendFrame(messageType, message)
 }
 
-//write utf-8 text message
+//WriteString writes utf-8 text message
 func (c *Conn) WriteString(message []byte) error {
 	return c.Write(message, false)
 }
 
-//write binary message
+//WriteBinary writes binary message
 func (c *Conn) WriteBinary(message []byte) error {
 	return c.Write(message, true)
 }

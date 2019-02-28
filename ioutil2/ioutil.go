@@ -11,7 +11,7 @@ import (
 	"path"
 )
 
-// Write file to temp and atomically move when everything else succeeds.
+// WriteFileAtomic writes file to temp and atomically move when everything else succeeds.
 func WriteFileAtomic(filename string, data []byte, perm os.FileMode) error {
 	dir, name := path.Dir(filename), path.Base(filename) 
 	f, err := ioutil.TempFile(dir, name)
@@ -32,7 +32,7 @@ func WriteFileAtomic(filename string, data []byte, perm os.FileMode) error {
 	return os.Rename(f.Name(), filename)
 }
 
-// Check file exists or not
+// FileExists checks file exists or not
 func FileExists(name string) bool {
 	_, err := os.Stat(name)
 	return !os.IsNotExist(err)
